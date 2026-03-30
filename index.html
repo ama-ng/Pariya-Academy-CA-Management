@@ -13,11 +13,12 @@
             --text: #1e293b;
             --text-light: #64748b;
             --danger: #ef4444;
+            --warning: #f59e0b;
             --border: #e2e8f0;
         }
 
         body {
-            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
             background-color: var(--bg);
             color: var(--text);
             margin: 0;
@@ -32,173 +33,62 @@
             box-shadow: 0 4px 10px rgba(0,0,0,0.05);
         }
 
-        .logo-img {
-            width: 110px;
-            height: auto;
-            margin-bottom: 1rem;
-        }
+        .logo-img { width: 110px; height: auto; margin-bottom: 1rem; }
+        h1 { margin: 0; color: var(--primary); font-size: 1.6rem; text-transform: uppercase; }
+        .motto { font-style: italic; color: var(--text-light); margin-top: 0.5rem; font-weight: 600; }
 
-        h1 {
-            margin: 0;
-            color: var(--primary);
-            font-size: 1.7rem;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
+        .container { max-width: 1100px; margin: 2rem auto; padding: 0 1.5rem; }
 
-        .motto {
-            font-style: italic;
-            color: var(--text-light);
-            margin-top: 0.5rem;
-            font-weight: 600;
-        }
+        .action-bar { display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem; flex-wrap: wrap; gap: 10px; }
+        .sync-info { font-size: 0.85rem; color: var(--text-light); font-weight: 700; }
 
-        .container {
-            max-width: 1100px;
-            margin: 2rem auto;
-            padding: 0 1.5rem;
-        }
-
-        /* Top Action Bar */
-        .action-bar {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
+        /* Alert Section */
+        #alert-section {
+            background: #fff7ed;
+            border: 1px solid #fed7aa;
+            padding: 1rem;
+            border-radius: 12px;
             margin-bottom: 2rem;
-            flex-wrap: wrap;
-            gap: 10px;
+            display: none;
         }
+        .alert-title { color: #9a3412; font-weight: 800; margin-bottom: 0.5rem; }
 
-        .sync-info {
-            font-size: 0.85rem;
-            color: var(--text-light);
-            font-weight: 600;
-        }
-
-        #loading-overlay {
-            text-align: center;
-            padding: 2rem;
-            font-weight: bold;
-            color: var(--primary);
-        }
+        #loading-overlay { text-align: center; padding: 2rem; font-weight: bold; color: var(--primary); }
 
         /* Home View Grid */
-        .class-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-            gap: 1.5rem;
-        }
-
+        .class-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 1.5rem; }
         .class-card {
-            background: var(--card);
-            padding: 1.8rem;
-            border-radius: 15px;
-            border-left: 8px solid var(--primary);
-            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
-            cursor: pointer;
-            transition: all 0.3s ease;
+            background: var(--card); padding: 1.8rem; border-radius: 15px; border-left: 8px solid var(--primary);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.08); cursor: pointer; transition: 0.3s;
         }
+        .class-card:hover { transform: translateY(-5px); box-shadow: 0 8px 20px rgba(0,0,0,0.12); }
+        .class-card h3 { margin: 0 0 1.2rem 0; font-size: 1.4rem; color: var(--primary); }
 
-        .class-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 8px 20px rgba(0,0,0,0.12);
-        }
-
-        .class-card h3 {
-            margin: 0 0 1.2rem 0;
-            font-size: 1.4rem;
-            color: var(--primary);
-        }
-
-        .progress-box {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            font-weight: 800;
-            padding-top: 1rem;
-            border-top: 1px solid var(--border);
-        }
-
+        .progress-box { display: flex; justify-content: space-between; align-items: center; font-weight: 800; padding-top: 1rem; border-top: 1px solid var(--border); }
         .status-sub { color: var(--accent); }
         .status-rem { color: var(--danger); }
 
-        /* Detail View */
         #detail-view { display: none; }
-
-        .controls {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            flex-wrap: wrap;
-            gap: 1rem;
-            margin-bottom: 1.5rem;
-        }
-
-        .btn {
-            padding: 0.7rem 1.4rem;
-            border-radius: 8px;
-            border: none;
-            cursor: pointer;
-            font-weight: 600;
-            transition: 0.2s;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-
+        .controls { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; margin-bottom: 1.5rem; }
+        .btn { padding: 0.7rem 1.4rem; border-radius: 8px; border: none; cursor: pointer; font-weight: 700; transition: 0.2s; }
         .btn-primary { background: var(--primary); color: white; }
         .btn-secondary { background: #475569; color: white; }
-        .btn:hover { opacity: 0.9; }
+        .btn-warning { background: var(--warning); color: #000; }
+        
+        .search-input { padding: 0.7rem 1rem; border: 2px solid var(--border); border-radius: 8px; width: 100%; max-width: 300px; }
 
-        .search-input {
-            padding: 0.7rem 1rem;
-            border: 2px solid var(--border);
-            border-radius: 8px;
-            width: 100%;
-            max-width: 300px;
-        }
-
-        .table-container {
-            background: var(--card);
-            border-radius: 15px;
-            overflow: hidden;
-            box-shadow: 0 10px 15px rgba(0,0,0,0.05);
-        }
-
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            min-width: 650px;
-        }
-
-        th, td {
-            padding: 1.1rem;
-            text-align: center;
-            border-bottom: 1px solid var(--border);
-        }
-
+        .table-container { background: var(--card); border-radius: 15px; overflow-x: auto; box-shadow: 0 10px 15px rgba(0,0,0,0.05); }
+        table { width: 100%; border-collapse: collapse; min-width: 650px; }
+        th, td { padding: 1.1rem; text-align: center; border-bottom: 1px solid var(--border); }
         th { background: #f1f5f9; color: var(--text); font-size: 0.8rem; text-transform: uppercase; }
-        td:first-child, th:first-child { text-align: left; width: 30%; }
+        td:first-child, th:first-child { text-align: left; width: 30%; font-weight: 600; }
 
-        .badge {
-            padding: 0.4rem 0.7rem;
-            border-radius: 6px;
-            font-size: 0.8rem;
-            font-weight: 700;
-        }
-
+        .badge { padding: 0.4rem 0.7rem; border-radius: 6px; font-size: 0.8rem; font-weight: 700; }
         .badge-done { background: #dcfce7; color: #166534; }
         .badge-pending { background: #fee2e2; color: #991b1b; }
         .badge-na { color: #cbd5e1; }
 
-        footer {
-            text-align: center;
-            padding: 3rem 1rem;
-            color: var(--text-light);
-            font-weight: 600;
-            border-top: 1px solid var(--border);
-            margin-top: 4rem;
-        }
+        footer { text-align: center; padding: 3rem 1rem; color: var(--text-light); border-top: 1px solid var(--border); margin-top: 4rem; font-weight: 600; }
     </style>
 </head>
 <body>
@@ -211,20 +101,26 @@
 
 <div class="container">
     
-    <div class="action-bar" id="home-actions">
-        <div class="sync-info" id="last-sync">Last Synced: Never</div>
-        <button class="btn btn-primary" onclick="initializeDashboard()">↻ Refresh Data</button>
+    <div id="alert-section">
+        <div class="alert-title">⚠️ Priority Alerts: Missing Records</div>
+        <div id="alert-list" style="font-size: 0.9rem; color: #431407;"></div>
     </div>
 
-    <div id="loading-overlay" style="display:none;">
-        <p>Fetching latest records...</p>
+    <div class="action-bar" id="home-actions">
+        <div class="sync-info" id="last-sync">Status: Awaiting Sync...</div>
+        <div>
+            <button class="btn btn-warning" onclick="generateReport()">📋 Copy Pending Report</button>
+            <button class="btn btn-primary" onclick="initializeDashboard()">↻ Sync All Classes</button>
+        </div>
     </div>
+
+    <div id="loading-overlay" style="display:none;">Synchronizing data from Google Drive...</div>
 
     <div id="home-view" class="class-grid"></div>
 
     <div id="detail-view">
         <div class="controls">
-            <button class="btn btn-secondary" onclick="goHome()">← Back</button>
+            <button class="btn btn-secondary" onclick="goHome()">← Back to Dashboard</button>
             <input type="text" id="subjectSearch" class="search-input" placeholder="Search subject..." onkeyup="filterSubjects()">
         </div>
         <h2 id="view-title" style="color: var(--primary); margin-bottom: 1rem;"></h2>
@@ -245,14 +141,10 @@
     </div>
 </div>
 
-<footer>
-    Copyright ©️ Arabo Modibbo, 2026
-</footer>
+<footer>Copyright ©️ Arabo Modibbo, 2026</footer>
 
 <script>
-    /** * CONFIGURATION: 
-     * Paste your "Published to Web" CSV links here.
-     */
+    /** * CONFIGURATION: PASTE YOUR CSV LINKS HERE */
     const CONFIG_LINKS = {
         "JSS 1": "https://docs.google.com/spreadsheets/d/e/2PACX-1vRAI5mD_lEIpq81Kk89kghO1SQciunctORaOEdEpkgmURxmEawlVRTl1HT-0-pkKA/pub?gid=621314920&single=true&output=csv",
         "JSS 2": "https://docs.google.com/spreadsheets/d/e/2PACX-1vR7KCoen0Wu3Pc5gxNVGF1abBYAL78QHbaBGd8Cp5Efh4YhkJ5h17E0yLtL1wn_SQ/pub?gid=38773167&single=true&output=csv",
@@ -285,16 +177,17 @@
 
     async function initializeDashboard() {
         document.getElementById('loading-overlay').style.display = 'block';
-        document.getElementById('home-view').style.opacity = '0.5';
-
+        document.getElementById('home-view').style.opacity = '0.3';
         const classes = Object.keys(CONFIG_LINKS);
+        let criticalIssues = [];
+        
         for (const cls of classes) {
             const url = CONFIG_LINKS[cls];
             globalStore[cls] = { total: 0, completed: 0, subjects: {} };
             if (!url || url.includes("YOUR_LINK")) continue;
 
             try {
-                const response = await fetch(url + '?cacheburst=' + new Date().getTime());
+                const response = await fetch(url + '?cache=' + Date.now());
                 const csvData = await response.text();
                 const rows = parseCSV(csvData);
                 if (rows.length < 1) continue;
@@ -302,33 +195,79 @@
                 const headers = rows[0], dataRows = rows.slice(1), subjects = {};
 
                 headers.forEach((header, index) => {
-                    if (header.includes('_CA1') || header.includes('_CA2') || header.includes('_CA3') || header.includes('_Exams')) {
-                        const suffixIndex = header.lastIndexOf('_');
-                        const subjectName = header.substring(0, suffixIndex).trim();
-                        const type = header.substring(suffixIndex + 1).trim();
+                    const cleanHeader = header.toUpperCase().replace(/\s/g, '');
+                    let type = null;
+                    if (cleanHeader.endsWith('CA1')) type = "CA1";
+                    else if (cleanHeader.endsWith('CA2')) type = "CA2";
+                    else if (cleanHeader.endsWith('CA3')) type = "CA3";
+                    else if (cleanHeader.endsWith('EXAMS')) type = "Exams";
 
-                        if (!subjects[subjectName]) {
-                            subjects[subjectName] = { "CA1": null, "CA2": null, "CA3": null, "Exams": null };
-                        }
+                    if (type) {
+                        const subjectName = header.split(/_|\sCA|Exam/i)[0].trim();
+                        if (!subjects[subjectName]) subjects[subjectName] = { "CA1": null, "CA2": null, "CA3": null, "Exams": null };
 
                         let isDone = false;
                         for (let r = 0; r < dataRows.length; r++) {
-                            if (dataRows[r][index] && dataRows[r][index] !== "") { isDone = true; break; }
+                            const val = dataRows[r][index];
+                            if (val && val.trim() !== "" && val !== "0" && val !== "-") { isDone = true; break; }
                         }
-
                         subjects[subjectName][type] = isDone;
                         globalStore[cls].total++;
                         if (isDone) globalStore[cls].completed++;
                     }
                 });
+                
                 globalStore[cls].subjects = subjects;
-            } catch (err) { console.error(`Error loading ${cls}:`, err); }
+                for (let sub in subjects) {
+                    if (!subjects[sub].CA1 && !subjects[sub].CA2 && !subjects[sub].CA3 && !subjects[sub].Exams) {
+                        criticalIssues.push(`${cls}: ${sub}`);
+                    }
+                }
+            } catch (err) { console.error(err); }
         }
         
+        renderAlerts(criticalIssues);
         document.getElementById('loading-overlay').style.display = 'none';
         document.getElementById('home-view').style.opacity = '1';
         document.getElementById('last-sync').innerText = "Last Synced: " + new Date().toLocaleTimeString();
         renderHome();
+    }
+
+    function generateReport() {
+        let report = "--- PARIYA ACADEMY PENDING REPORT ---\n";
+        report += "Date: " + new Date().toLocaleDateString() + "\n\n";
+        
+        for (let cls in globalStore) {
+            let pendingList = [];
+            let subjects = globalStore[cls].subjects;
+            for (let sub in subjects) {
+                let missing = [];
+                if (!subjects[sub].CA1) missing.push("1st CA");
+                if (!subjects[sub].CA2) missing.push("2nd CA");
+                if (!subjects[sub].CA3) missing.push("3rd CA");
+                if (!subjects[sub].Exams) missing.push("Exams");
+                
+                if (missing.length > 0) {
+                    pendingList.push(`${sub} (Missing: ${missing.join(', ')})`);
+                }
+            }
+            if (pendingList.length > 0) {
+                report += `[${cls}]\n- ` + pendingList.join('\n- ') + "\n\n";
+            }
+        }
+        
+        navigator.clipboard.writeText(report).then(() => {
+            alert("Report copied to clipboard! You can now paste it into WhatsApp or Email.");
+        });
+    }
+
+    function renderAlerts(issues) {
+        const section = document.getElementById('alert-section');
+        const list = document.getElementById('alert-list');
+        if (issues.length > 0) {
+            section.style.display = 'block';
+            list.innerHTML = issues.slice(0, 5).join(' | ') + (issues.length > 5 ? ` ...and ${issues.length - 5} more.` : '');
+        } else { section.style.display = 'none'; }
     }
 
     function renderHome() {
@@ -344,32 +283,27 @@
                         <span class="status-sub">${subPercent}% Done</span>
                         <span class="status-rem">${100 - subPercent}% Pending</span>
                     </div>
-                </div>
-            `;
+                </div>`;
         });
     }
 
     function showDetails(cls) {
         document.getElementById('home-view').style.display = 'none';
         document.getElementById('home-actions').style.display = 'none';
+        document.getElementById('alert-section').style.display = 'none';
         document.getElementById('detail-view').style.display = 'block';
-        document.getElementById('view-title').innerText = `${cls} - Subject Status`;
-        document.getElementById('subjectSearch').value = '';
-
+        document.getElementById('view-title').innerText = cls + " Full Breakdown";
         const tbody = document.getElementById('subject-table-body');
         tbody.innerHTML = '';
         const subjects = globalStore[cls].subjects;
         for (const [name, status] of Object.entries(subjects)) {
-            tbody.innerHTML += `
-                <tr>
-                    <td><strong>${name}</strong></td>
-                    <td>${formatBadge(status.CA1)}</td>
-                    <td>${formatBadge(status.CA2)}</td>
-                    <td>${formatBadge(status.CA3)}</td>
-                    <td>${formatBadge(status.Exams)}</td>
-                </tr>
-            `;
+            tbody.innerHTML += `<tr><td>${name}</td><td>${formatBadge(status.CA1)}</td><td>${formatBadge(status.CA2)}</td><td>${formatBadge(status.CA3)}</td><td>${formatBadge(status.Exams)}</td></tr>`;
         }
+    }
+
+    function formatBadge(val) {
+        if (val === null) return `<span class="badge-na">—</span>`;
+        return val ? `<span class="badge badge-done">DONE ✓</span>` : `<span class="badge badge-pending">WAIT ✗</span>`;
     }
 
     function filterSubjects() {
@@ -377,22 +311,15 @@
         const tr = document.getElementById('subjectTable').getElementsByTagName('tr');
         for (let i = 1; i < tr.length; i++) {
             const td = tr[i].getElementsByTagName('td')[0];
-            if (td) {
-                const textValue = td.textContent || td.innerText;
-                tr[i].style.display = textValue.toLowerCase().indexOf(filter) > -1 ? "" : "none";
-            }
+            if (td) tr[i].style.display = td.innerText.toLowerCase().includes(filter) ? "" : "none";
         }
-    }
-
-    function formatBadge(val) {
-        if (val === null) return `<span class="badge-na">—</span>`;
-        return val ? `<span class="badge badge-done">Done ✓</span>` : `<span class="badge badge-pending">Wait ✗</span>`;
     }
 
     function goHome() {
         document.getElementById('detail-view').style.display = 'none';
         document.getElementById('home-view').style.display = 'grid';
         document.getElementById('home-actions').style.display = 'flex';
+        initializeDashboard(); 
     }
 
     window.onload = initializeDashboard;
